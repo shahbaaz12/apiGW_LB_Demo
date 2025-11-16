@@ -1,3 +1,5 @@
+
+## ApiGW + LB Reqeust flow
 This project demonstrates an API flow using Kong as the API gateway, Nginx as the load balancer, and two Node.js application instances backed by MongoDB.
 All services run using Docker Compose for easy local testing and routing.
 
@@ -35,6 +37,8 @@ POST http://localhost:8080/users
 This bypasses Kong and sends the request directly to Nginx, which forwards it to app1 or app2.
 
 Request Flow Diagram
+
+```js
             +-------------+
             |   Client    |
             +-------------+
@@ -63,7 +67,7 @@ Request Flow Diagram
             +-------------+
             |   MongoDB   |
             +-------------+
-
+```
 How Requests Flow Through the System
 
 Client calls Kong:
