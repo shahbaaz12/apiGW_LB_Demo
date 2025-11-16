@@ -1,0 +1,12 @@
+# Kong declarative configuration (DB-less mode)
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: user-service
+    url: http://nginx:80
+    routes:
+      - name: user-route
+        paths:
+          - /users
+        strip_path: false   # <--- Add this line
