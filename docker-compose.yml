@@ -8,13 +8,13 @@ services:
     image: kong:3.6
     container_name: kong
     environment:
-      - KONG_DATABASE=off  # Run Kong in DB-less mode
+      - KONG_DATABASE=off # Run Kong in DB-less mode
       - KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yml
       - KONG_PROXY_LISTEN=0.0.0.0:8000, [::]:8000
       - KONG_ADMIN_LISTEN=0.0.0.0:8001, [::]:8001
     ports:
-      - "8000:8000"  # Public API endpoint
-      - "8001:8001"  # Admin API
+      - "8000:8000" # Public API endpoint
+      - "8001:8001" # Admin API
     volumes:
       - ./kong:/kong
     depends_on:
@@ -44,6 +44,8 @@ services:
   app1:
     build: ./app
     container_name: app1
+    ports:
+      - "3000:3000"
     environment:
       - PORT=3000
       - MONGO_URL=mongodb://mongo:27017/usersdb
@@ -59,6 +61,8 @@ services:
   app2:
     build: ./app
     container_name: app2
+    ports:
+      - "3001:3001"
     environment:
       - PORT=3001
       - MONGO_URL=mongodb://mongo:27017/usersdb
